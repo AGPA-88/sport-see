@@ -1,0 +1,42 @@
+.square{
+    display: flex;
+    justify-content: flex-end;
+    width: 258px;
+    margin-right: 90px;
+}
+.icons-container{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    background-color: #FBFBFB;
+    padding: 10px;
+    margin-bottom: 40px;
+    width: 258px;
+    height: 125px;
+    border-radius: 5px;
+}
+
+.icon-card{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    width: 60px;
+    height: 60px;
+}
+.icon-img{
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-radius: 6px;
+}
+
+.values{
+    font-size: 20px;
+    font-weight: 700;
+}
+.units{
+    color: #74798C;
+    font-size: 14px;
+    font-weight: 500;
+}

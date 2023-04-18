@@ -1,0 +1,11 @@
+.graph-container{
+    height: 263px!important;
+    width: 258px!important;
+    background-color:#282D30;
+    border-radius: 5px;
+    margin-left: 30px;
+}
+.graph-performance{
+    text-align: center;
+    border-radius: 5px;
+}

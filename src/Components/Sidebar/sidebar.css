@@ -1,0 +1,21 @@
+.sidebar{
+    top: 75px;
+    /* height: 250px; */
+}
+.icon-buttons{
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    justify-content: space-evenly!important;
+    gap: 150px;
+}
+.sidebar p{
+    color: white;
+    transform: rotate(-90deg);
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 24px;
+    width: 140px;
+    height: 40px;
+    display: flex;
+}

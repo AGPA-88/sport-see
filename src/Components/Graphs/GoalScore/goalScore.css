@@ -1,0 +1,30 @@
+.graph-goal{
+    text-align: center;
+    background-color: #fbfbfb;
+    border-radius: 5px;
+    width:258px ;
+    height:263px;
+}
+.goal-title{
+    /* z-index: 100; */
+    width: 147px;
+    font-size: 15px;
+    font-weight: 600;
+    color: black;
+    position: absolute;
+    margin-top: 15px;
+    margin-left: -25px;
+}
+
+.graph-goal-value{
+    z-index: 100;
+    position: relative;
+    top: -150px;
+}
+.graph-value{
+    font-weight: bolder;
+}
+
+.recharts-legend-icon{
+    display: none;
+}

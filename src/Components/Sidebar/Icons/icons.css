@@ -1,0 +1,12 @@
+.sidebar{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    background-color: black;
+    width: 117px;
+    /* height: 240px; */
+}
+.icon-buttons{
+    padding-bottom: 10px;
+}

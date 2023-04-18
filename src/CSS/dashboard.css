@@ -1,0 +1,17 @@
+/* aside{
+    height: 2000px;
+} */
+
+.graph-group{
+    /* display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center; */
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.single-graph{
+    margin-bottom: 50px;
+}

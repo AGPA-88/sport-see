@@ -1,6 +1,8 @@
+import './icons.css'
+
 function SidebarIcons ({icon}){
     return(
-    <div className='sidebar' style={{display: 'table', padding: 8, backgroundColor: 'black'}}>
+    <div className='sidebar'>
             <div className="icon-buttons">
                 <div>
                     {icon}

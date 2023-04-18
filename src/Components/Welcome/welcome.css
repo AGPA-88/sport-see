@@ -1,0 +1,22 @@
+.welcome{
+    width: 100%;
+    /* padding-left: 25px; */
+    padding-bottom: 75px;
+    font-family: 'Roboto', sans-serif;
+}
+.user-container{
+    font-size: 48px;
+    font-weight: 500;
+    display: flex;
+    gap: 15px;
+    padding-bottom: 20px;
+}
+
+.user-name{
+    color: #FF0101;
+}
+
+.goals{
+    font-size: 18px;
+    font-weight: 400;
+}
