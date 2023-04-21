@@ -1,6 +1,6 @@
 import './welcome.css'
 
-function Welcome({userInfos}) {
+function Welcome({name}) {
     return (
         <div className='welcome'>
             <div className='user-container'>
@@ -9,7 +9,7 @@ function Welcome({userInfos}) {
                 </div> 
                 
                 <div className='user-name'>
-                    {userInfos.firstName}
+                    {name}
                 </div>
             </div>
             <div className='goals'>
