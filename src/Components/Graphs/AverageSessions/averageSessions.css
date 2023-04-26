@@ -17,3 +17,11 @@
     margin-top:15px;
     margin-left:20px;
 }
+.chart-average .recharts-tooltip-label{
+    display: none;
+}
+.chart-average .recharts-tooltip-item-list li{
+    color: black!important;
+}
+
+

@@ -10,7 +10,7 @@ function TodayScoreChart({ scores }) {
   return (
     <div className='graph-goal'>
       <div className='goal-title'>Score</div>
-      <RadialBarChart width={258} height={263}  innerRadius="50%" outerRadius="100%" barSize={10} data={scores}>
+      <RadialBarChart width={280} height={295}  innerRadius="50%" outerRadius="100%" barSize={10} data={scores}>
           <RadialBar
             minAngle={15}
             label={{ position: 'center', fill: 'transparent' }}
@@ -18,7 +18,7 @@ function TodayScoreChart({ scores }) {
             clockWise
             dataKey="value"
           />
-          <Legend iconSize={10} layout="vertical" verticalAlign="bottom"  />
+          {/* <Legend iconSize={10} layout="vertical" verticalAlign="bottom"  /> */}
         </RadialBarChart>
         <div className='graph-goal-value'>
           <div className='graph-value'>{scores[1].value}%</div>

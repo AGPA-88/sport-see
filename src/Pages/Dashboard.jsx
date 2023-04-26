@@ -19,7 +19,7 @@ function Dashboard () {
     const [data, setData] = useState({});
     const [activity, setActivity] = useState([]);
     const [session, setAverageSession] = useState([]);
-    const [performance, setPerformance] = useState(null);
+    const [performance, setPerformance] = useState([]);
     const [scores, setScores] = useState([])
     const [firstName, setFirstName] = useState('');
     
@@ -35,8 +35,7 @@ function Dashboard () {
             await fetchSession(setAverageSession, id);
       }
         async function getPerformance(id) {
-            const response = await fetchPerformance(id);
-        setPerformance(response.data);
+            await fetchPerformance(setPerformance ,id);
       }
       async function getScores(id){
         await fetchScores(setScores, id);
@@ -77,7 +76,7 @@ function Dashboard () {
                                 </div>
                                 <div className='graph-group'>
                                     <AverageSessions averageSession = {session}/>
-                                    <PerformanceChart userPerformanceData = {performance.data} kind = {performance.kind} />
+                                    <PerformanceChart userPerformanceData = {performance}/>
                                     <GoalScore scores = {scores}/>
                                 </div>
                             </div>
