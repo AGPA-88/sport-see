@@ -17,15 +17,18 @@ export class Activity{
 }
 
 export class AverageSession{
-    constructor(dayToDisplay, sessionLength){
-      this.dayToDisplay = dayToDisplay;
+  constructor(day, sessionLength){
+      const dayInLetters = ['offset', 'M', 'T', 'W', 'T', 'F', 'S', 'S'];
+      this.day = day;
       this.sessionLength = sessionLength;
+      this.dayToDisplay = dayInLetters[day];
     }
   }
 
 export class Performance {
-    constructor(kindToDisplay, value) {
-      this.kindToDisplay = kindToDisplay;
+    constructor(kind, value, kinds) {
+      this.kind = kind;
       this.value = value;
+      this.kindToDisplay = kinds[kind];
     }
   }

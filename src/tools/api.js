@@ -19,15 +19,14 @@ export async function fetchSession(setAverageSession, userId=12) {
   console.log("🚀 ~ file: api.js:21 ~ fetchSession ~ averageSessions:", averageSessions)
   setAverageSession(averageSessions);
 }
-export async function fetchPerformance(userId=12) {
+
+export async function fetchPerformance(setPerformance ,userId=12) {
   const response = await axios.get('http://localhost:3000/user/' + userId + '/performance');
-  return response.data;
+  console.log("🚀 ~ file: api.js:28 ~ fetchPerformance ~ response:", response.data.data)
+  const performance = response.data.data.data.map(kind => {return new Performance(kind.kind, kind.value, response.data.data.kind)})
+  console.log("🚀 ~ file: api.js:30 ~ fetchPerformance ~ Performance:", performance)
+  setPerformance(performance)
 }
-// export async function fetchPerformance(setPerformance ,userId=12) {
-//   const response = await axios.get('http://localhost:3000/user/' + userId + '/performance');
-//   const performance = response.data.data.sessions.map(kind => {return new Performance(kind.value, kind.kind)})
-//   setPerformance(performance)
-// }
 
 // function to fetch Scores
 export async function fetchScores(setScores, userId=12) {
