@@ -1,8 +1,8 @@
 .square{
     display: flex;
     justify-content: flex-end;
-    width: 258px;
-    margin-right: 90px;
+    /* width: 258px; */
+    /* margin-right: 90px; */
 }
 .icons-container{
     display: flex;

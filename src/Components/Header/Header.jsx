@@ -1,3 +1,8 @@
+/**
+Renders the header of the application with a logo and navigation links.
+@returns {JSX.Element} The rendered header component.
+*/
+
 import logo from '../../logo.svg';
 import './header.css';
 import {Link} from 'react-router-dom';

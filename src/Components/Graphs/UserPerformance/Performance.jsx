@@ -1,3 +1,12 @@
+/**
+ * A Radar chart component to display user's performance data.
+ * @param {object} props - The props object containing user performance data.
+ * @param {Array} props.userPerformanceData - An array of objects containing performance data.
+ * @param {string} props.userPerformanceData.kindToDisplay - A string representing the kind of data to be displayed.
+ * @param {number} props.userPerformanceData.value - A number representing the performance value.
+ * @returns {JSX.Element} A Radar chart component.
+ */
+
 import { Radar, RadarChart, PolarGrid, PolarAngleAxis } from 'recharts';
 import './performance.css'
 

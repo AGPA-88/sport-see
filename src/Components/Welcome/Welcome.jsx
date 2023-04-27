@@ -1,3 +1,9 @@
+/**
+ * A functional component that displays a welcome message and congratulates the user for reaching their goals.
+ * @param {string} name - The name of the user.
+ * @returns {JSX.Element} - A JSX element that displays the welcome message and congratulatory note.
+ */
+
 import './welcome.css'
 
 function Welcome({name}) {

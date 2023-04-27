@@ -1,3 +1,13 @@
+/**
+A component that displays nutrient data in square boxes with icons.
+@component
+@param {Object} props - The component's props.
+@param {Object} props.keyData - An object containing nutrient data.
+@return {JSX.Element} - A JSX element representing a collection of nutrient squares.
+@example
+<Squares keyData={keyData} />
+*/
+
 import Icon from '../Icons/';
 import { ReactComponent as CaloriesIcon } from '../../Icons/calories.svg';
 import { ReactComponent as ProteinsIcon } from '../../Icons/proteins.svg';
@@ -12,6 +22,16 @@ function Squares ({keyData}) {
       carbs: <CarbsIcon />,
       lipids: <LipidsIcon />
     };
+
+/**
+* An object mapping nutrient names to their respective icons.
+*
+* @type {Object}
+* @property {JSX.Element} calories - The calories icon.
+* @property {JSX.Element} proteins - The proteins icon.
+* @property {JSX.Element} carbs - The carbs icon.
+* @property {JSX.Element} lipids - The lipids icon.
+*/
     
     const colors = {
         calories: '#FF0000', //red

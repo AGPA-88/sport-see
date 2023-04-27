@@ -30,7 +30,7 @@
 .recharts-legend-icon{
     display: none;
 }
-
+/* 
 @media (max-width: 767px) {
     .graph-goal {
       width: 100%;
@@ -86,4 +86,4 @@
     .recharts-radial-bar-arc {
       stroke-width: 10;
     }
-  }
+  } */

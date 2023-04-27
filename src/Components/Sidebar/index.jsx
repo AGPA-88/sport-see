@@ -1,3 +1,8 @@
+/**
+ * Displays a sidebar component with icons
+ * @returns {JSX.Element} The sidebar component
+ */
+
 import Icon from '../Sidebar/Icons';
 import './sidebar.css'
 import { ReactComponent as ZenIcon } from '../../Icons/zen.svg';
@@ -13,7 +18,7 @@ function Sidebar () {
         weight: <WeightIcon />
       };
     return(
-        <div className="sidebar" style={{height:'100%', position:'fixed'}}>
+        <div className="sidebar" style={{height:'100%'}}>
             <div className="icon-buttons">
                 <div>
                     <Icon  icon={iconMapping['zen']}/>

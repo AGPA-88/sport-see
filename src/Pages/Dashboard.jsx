@@ -1,3 +1,23 @@
+/**
+
+This module contains a Dashboard component which renders a dashboard page.
+The component is responsible for fetching user data from an external API and displaying it.
+It includes multiple sub-components such as Sidebar, Header, Name, Squares, DailyActivity, AverageSessions, PerformanceChart, and GoalScore.
+@module Dashboard
+@requires react
+@requires react-router-dom
+@requires tools/api.js
+@requires ../CSS/dashboard.css
+@requires ../Components/Header/Header.jsx
+@requires ../Components/Welcome/Welcome.jsx
+@requires ../Components/Info/Square.jsx
+@requires ../Components/Sidebar/index.jsx
+@requires ../Components/Graphs/DailyActivity/DailyActivity.jsx
+@requires ../Components/Graphs/GoalScore/GoalScore.jsx
+@requires ../Components/Graphs/UserPerformance/Performance.jsx
+@requires ../Components/Graphs/AverageSessions/AverageSessions.jsx
+*/
+
 import React, { useState, useEffect } from 'react';
 import { fetchData, fetchActivity, fetchSession, fetchPerformance, fetchScores, fetchFirstName } from '../tools/api.js';
 import '../CSS/dashboard.css'
@@ -66,21 +86,21 @@ function Dashboard () {
             <div className="content">
                 <aside><Sidebar /></aside>
                 <main>
-                        <div style={{display:'flex'}}>
+                        <div className='main-screen'>
                             <Name name = {firstName}/>
-                            </div>
                             <div style={{display:'flex', justifyContent:'space-between'}}>
-                            <div className='graphs-container'>
-                                <div className='single-graph'>
-                                    <DailyActivity sessions = {activity}/>
+                                <div className='graphs-container'>
+                                    <div className='single-graph'>
+                                        <DailyActivity sessions = {activity}/>
+                                    </div>
+                                    <div className='graph-group'>
+                                        <AverageSessions averageSession = {session}/>
+                                        <PerformanceChart userPerformanceData = {performance}/>
+                                        <GoalScore scores = {scores}/>
+                                    </div>
                                 </div>
-                                <div className='graph-group'>
-                                    <AverageSessions averageSession = {session}/>
-                                    <PerformanceChart userPerformanceData = {performance}/>
-                                    <GoalScore scores = {scores}/>
-                                </div>
+                                <Squares keyData = {data.keyData}/>
                             </div>
-                            <Squares keyData = {data.keyData}/>
                         </div>
                 </main>
             </div>
