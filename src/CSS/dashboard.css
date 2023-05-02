@@ -9,18 +9,27 @@
 /* aside{
     height: 2000px;
 } */
-
+.graphs-container{
+    margin-right: 3%;
+}
+.single-graph{
+    margin-bottom: 50px;
+}
 .graph-group{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
 }
 
-.single-graph{
-    margin-bottom: 50px;
-}
 
-/* @media (max-width: 1400px) {
-    .content{
-        flex-direction: column;
+@media (max-width: 1400px) {
+    main{
+        margin-left: 25px;
+
     }
-} */
+    .content{
+        flex-direction: row;
+    }
+    .graphs-container{
+        margin-right: 0;
+    }
+}
