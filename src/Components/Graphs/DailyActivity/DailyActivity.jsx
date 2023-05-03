@@ -11,12 +11,13 @@ Renders a bar chart representing daily activity.
 */
 
 function ActivityGraph({ sessions }) {
+  const width = Math.round(window.innerWidth / 1.7);
   return (
     <div className='graph-activity'>
       <div className='title-container'>
         <div className='activity-title'>Daily Activity</div>
       </div>
-      <BarChart width={1000} height={320} data={sessions} margin={{top: 20, right: 30, left: 20, bottom: 5}}>
+      <BarChart width={width} height={320} data={sessions} margin={{top: 20, right: 30, left: 20, bottom: 5}}>
         <CartesianGrid strokeDasharray="3 3" />
         <XAxis dataKey="day" />
         <YAxis position/>

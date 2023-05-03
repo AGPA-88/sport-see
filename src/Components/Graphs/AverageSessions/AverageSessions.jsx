@@ -1,4 +1,4 @@
-import { LineChart, Line, XAxis, Tooltip, ResponsiveContainer } from 'recharts';
+import { LineChart, Line, XAxis, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import './averageSessions.css'
 
 /**
@@ -11,17 +11,21 @@ const UserAverageSessionsLineChart = ({ averageSession }) => {
   if (averageSession.length === "0") return <div></div>
   console.log("🚀 ~ file: AverageSessions.jsx:14 ~ UserAverageSessionsLineChart ~ averageSession:", averageSession)
 
+  let width = Math.round(window.innerWidth / 5.47);
+  width = width > 258 ? 258 : width
+  let height = Math.round((window.innerWidth) / 5.47);
+  height = height > 263 ? 263 : height
+
   return (
-    <div className='chart-average'>
+    <div className='graph-average'>
       <div className='average-title'>Average speed of your sessions</div>
-      <ResponsiveContainer width={258} height={263}>
+      <ResponsiveContainer width={width} height={height}>
         <LineChart data={averageSession}>
           <XAxis dataKey='dayToDisplay' stroke="white" />
           <Tooltip />
           <Line type="basis" dataKey='sessionLength' name='min' stroke="white" activeDot={{ r: 8 }} />
         </LineChart>
       </ResponsiveContainer>
-
     </div>
   );
 }

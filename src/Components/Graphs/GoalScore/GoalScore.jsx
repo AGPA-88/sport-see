@@ -26,10 +26,16 @@ function TodayScoreChart({ scores }) {
    * Data for the RadialBarChart.
    * @type {Array.<RadialBarChartData>}
    */
+  
+  let width = Math.round(window.innerWidth / 5.47);
+  width = width > 258 ? 258 : width
+  let height = Math.round(window.innerWidth / 5.47);
+  height = height > 263 ? 263 : height
+
   return (
     <div className='graph-goal'>
       <div className='goal-title'>Score</div>
-      <RadialBarChart width={280} height={295}  innerRadius="50%" outerRadius="100%" barSize={10} data={scores}>
+      <RadialBarChart width={width} height={height}  innerRadius="50%" outerRadius="100%" barSize={10} data={scores}>
           <RadialBar
             minAngle={15}
             label={{ position: 'center', fill: 'transparent' }}

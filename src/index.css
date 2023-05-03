@@ -15,12 +15,14 @@ code {
 }
 
 main {
-  margin-left: 2%;
+  /* margin: auto; */
+  /* max-width: 1440px; */
+  margin-left: 4%;
   margin-top: 50px;
   font-family: 'Roboto', sans-serif;
 }
 
-*{
+/* *{
   outline: 1px solid red;
-}
+} */
 

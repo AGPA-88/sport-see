@@ -88,7 +88,7 @@ function Dashboard () {
                 <main>
                         <div className='main-screen'>
                             <Name name = {firstName}/>
-                            <div style={{display:'flex', justifyContent:'space-between'}}>
+                            <div className='info-container'>
                                 <div className='graphs-container'>
                                     <div className='single-graph'>
                                         <DailyActivity sessions = {activity}/>
