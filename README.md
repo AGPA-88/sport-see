@@ -1,70 +1,127 @@
-# Getting Started with Create React App
+SportSee
+========
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+SportSee is a React frontend project developed as part of a developer course. It contains several components, CSS files, API files, and KPI files that help users track their fitness progress.
 
-## Available Scripts
+Getting Started
+---------------
+### Running the Backend
 
-In the project directory, you can run:
+The SportSee frontend relies on a backend API to retrieve data. To run the backend, follow these steps:
 
-### `npm start`
+1\.  Clone the backend repository to your local machine:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+    bashCopy code
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+    `git clone https://github.com/OpenClassrooms-Student-Center/P9-front-end-dashboard.git`
 
-### `npm test`
+2\.  Change to the project directory:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+    arduinoCopy code
 
-### `npm run build`
+    `cd P9-front-end-dashboard`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+3\.  Install the required dependencies:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+    Copy code
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+    `npm install`
 
-### `npm run eject`
+4\.  Start the backend server:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+    arduinoCopy code
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+    `npm run start`
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+    The server should now be running on port 3000.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+5\.  Configure the frontend to use the backend API:
 
-## Learn More
+    Open the `src/api/config.js` file and replace the `baseURL` value with `http://localhost:3000/`.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+    phpCopy code
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+    `const axiosInstance = axios.create({
 
-### Code Splitting
+      baseURL: 'http://localhost:3000/', // <-- Replace this value
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+      timeout: 10000,
 
-### Analyzing the Bundle Size
+    });`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+    Save the file.
 
-### Making a Progressive Web App
+6\.  Restart the frontend:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+    Run `npm start` in the frontend project directory to restart the frontend.
 
-### Advanced Configuration
+    bashCopy code
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+    `cd sport-see
 
-### Deployment
+    npm start`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+    The app should now be running with data from the backend API.
 
-### `npm run build` fails to minify
+### Prerequisites
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+To run SportSee on your machine, you need to have the following software installed:
+
+-   Node.js (version 12 or higher)
+-   npm (version 6 or higher)
+
+### Installation
+
+1.  Clone the repository to your local machine:
+
+    bashCopy code
+
+    `git clone https://github.com/AGPA-88/sport-see.git`
+
+2.  Change to the project directory:
+
+    bashCopy code
+
+    `cd sport-see`
+
+3.  Install the required dependencies:
+
+    Copy code
+
+    `npm install`
+
+### Running the App
+
+To start the app, run the following command in the project directory:
+
+sqlCopy code
+
+`npm start`
+
+The app should now be running at [http://localhost:3000](http://localhost:3000/). Open your web browser and go to that URL to see the app in action.
+
+Usage
+-----
+
+SportSee allows users to track their fitness progress through various KPIs (Key Performance Indicators). To use the app, follow these steps:
+
+1.  Log in with your username and password.
+2.  View your fitness dashboard, which shows your progress across various KPIs.
+3.  Select a KPI to view more detailed information about your progress.
+
+Contributing
+------------
+
+If you want to contribute to this project, please follow these guidelines:
+
+1.  Fork the repository.
+2.  Create a new branch for your changes.
+3.  Make your changes and test them thoroughly.
+4.  Commit your changes with clear and concise commit messages.
+5.  Push your changes to your fork.
+6.  Create a pull request for your changes.
+
+License
+-------
+
+This project is licensed under the MIT License - see the [LICENSE](https://chat.openai.com/LICENSE) file for details.
