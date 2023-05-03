@@ -11,25 +11,17 @@ The SportSee frontend relies on a backend API to retrieve data. To run the backe
 
 1\.  Clone the backend repository to your local machine:
 
-    bashCopy code
-
     `git clone https://github.com/OpenClassrooms-Student-Center/P9-front-end-dashboard.git`
 
 2\.  Change to the project directory:
-
-    arduinoCopy code
 
     `cd P9-front-end-dashboard`
 
 3\.  Install the required dependencies:
 
-    Copy code
-
     `npm install`
 
 4\.  Start the backend server:
-
-    arduinoCopy code
 
     `npm run start`
 
@@ -38,8 +30,6 @@ The SportSee frontend relies on a backend API to retrieve data. To run the backe
 5\.  Configure the frontend to use the backend API:
 
     Open the `src/api/config.js` file and replace the `baseURL` value with `http://localhost:3000/`.
-
-    phpCopy code
 
     `const axiosInstance = axios.create({
 
@@ -54,9 +44,7 @@ The SportSee frontend relies on a backend API to retrieve data. To run the backe
 6\.  Restart the frontend:
 
     Run `npm start` in the frontend project directory to restart the frontend.
-
-    bashCopy code
-
+    
     `cd sport-see
 
     npm start`
@@ -74,27 +62,19 @@ To run SportSee on your machine, you need to have the following software install
 
 1.  Clone the repository to your local machine:
 
-    bashCopy code
-
     `git clone https://github.com/AGPA-88/sport-see.git`
 
 2.  Change to the project directory:
 
-    bashCopy code
-
     `cd sport-see`
 
 3.  Install the required dependencies:
-
-    Copy code
 
     `npm install`
 
 ### Running the App
 
 To start the app, run the following command in the project directory:
-
-sqlCopy code
 
 `npm start`
 
