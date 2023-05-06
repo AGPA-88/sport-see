@@ -1,3 +1,10 @@
+/**
+Returns a lighter shade of a given color in hex format
+@param {string} hexColor - The hex representation of the color to lighten, e.g. "#FF0000"
+@param {number} percent - The percentage (0-1) to lighten the color by
+@returns {string} - The hex representation of the lighter color
+*/
+
 function lightenColor(hexColor, percent) {
   const hex = hexColor.replace('#', '');
 
