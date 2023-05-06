@@ -34,8 +34,6 @@ import { useParams } from 'react-router-dom';
 function Dashboard () {
     /* get user id from the url params */
     const {id} = useParams();
-    // if (!id) id = null;
-    console.log(id)
     const [data, setData] = useState({});
     const [activity, setActivity] = useState([]);
     const [session, setAverageSession] = useState([]);
@@ -75,10 +73,6 @@ function Dashboard () {
     if (firstName === "") {
       return <div>Loading...</div>;
     }
-    console.log(data)
-    console.log(activity)
-    console.log(session)
-    console.log(performance)
 
     return (
         <div>

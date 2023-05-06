@@ -9,7 +9,6 @@ A component that displays a line chart of the average speed of user sessions.
 */
 const UserAverageSessionsLineChart = ({ averageSession }) => {
   if (averageSession.length === "0") return <div></div>
-  console.log("🚀 ~ file: AverageSessions.jsx:14 ~ UserAverageSessionsLineChart ~ averageSession:", averageSession)
 
   let width = Math.round(window.innerWidth / 5.47);
   width = width > 258 ? 258 : width

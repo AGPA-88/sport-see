@@ -9,7 +9,6 @@ Retrieves data for a specific user from the server
 @returns {Promise} - A Promise object that resolves to the user data retrieved from the server
 */
 export async function fetchData(userId=12) {
-  console.log(userId)
   const response = await axios.get('http://localhost:3000/user/' + userId);
   return response.data;
 }
@@ -42,9 +41,7 @@ export async function fetchActivity(setActivity, userId=12) {
  */
 export async function fetchSession(setAverageSession, userId=12) {
   const response = await axios.get('http://localhost:3000/user/' + userId + '/average-sessions');
-  console.log("🚀 ~ file: api.js:16 ~ fetchSession ~ response:", response)
   const averageSessions = response.data.data.sessions.map(session => {return new AverageSession(session.day, session.sessionLength)})
-  console.log("🚀 ~ file: api.js:21 ~ fetchSession ~ averageSessions:", averageSessions)
   setAverageSession(averageSessions);
 }
 
@@ -60,9 +57,7 @@ Fetches user's performance data from the API endpoint and sets it in the state v
 */
 export async function fetchPerformance(setPerformance ,userId=12) {
   const response = await axios.get('http://localhost:3000/user/' + userId + '/performance');
-  console.log("🚀 ~ file: api.js:28 ~ fetchPerformance ~ response:", response.data.data)
   const performance = response.data.data.data.map(kind => {return new Performance(kind.kind, kind.value, response.data.data.kind)})
-  console.log("🚀 ~ file: api.js:30 ~ fetchPerformance ~ Performance:", performance)
   setPerformance(performance)
 }
 

@@ -11,7 +11,6 @@ import './performance.css'
 
 const UserPerformanceRadarChart = ({ userPerformanceData }) => {
   
-  console.log(userPerformanceData);
   let width = Math.round(window.innerWidth / 5.47);
   width = width > 258 ? 258 : width
   let height = Math.round(window.innerWidth / 5.47);

@@ -10,7 +10,6 @@ import './goalScore.css'
 import { RadialBarChart, RadialBar } from 'recharts';
 
 function TodayScoreChart({ scores }) {
-  console.log(scores)
   if (scores.length === 0) return <div className="graph-goal"><div className="goal-title">Score</div></div>
 
   /**
