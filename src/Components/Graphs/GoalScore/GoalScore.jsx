@@ -7,7 +7,7 @@
  */
 
 import './goalScore.css'
-import { RadialBarChart, RadialBar, Legend } from 'recharts';
+import { RadialBarChart, RadialBar } from 'recharts';
 
 function TodayScoreChart({ scores }) {
   console.log(scores)
@@ -26,7 +26,7 @@ function TodayScoreChart({ scores }) {
    * Data for the RadialBarChart.
    * @type {Array.<RadialBarChartData>}
    */
-  
+
   let width = Math.round(window.innerWidth / 5.47);
   width = width > 258 ? 258 : width
   let height = Math.round(window.innerWidth / 5.47);
@@ -43,7 +43,6 @@ function TodayScoreChart({ scores }) {
             clockWise
             dataKey="value"
           />
-          {/* <Legend iconSize={10} layout="vertical" verticalAlign="bottom"  /> */}
         </RadialBarChart>
         <div className='graph-goal-value'>
           <div className='graph-value'>{scores[1].value}%</div>

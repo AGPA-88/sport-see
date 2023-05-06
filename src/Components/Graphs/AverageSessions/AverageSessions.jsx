@@ -1,4 +1,4 @@
-import { LineChart, Line, XAxis, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import { LineChart, Line, XAxis, Tooltip, ResponsiveContainer } from 'recharts';
 import './averageSessions.css'
 
 /**
