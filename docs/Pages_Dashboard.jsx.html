@@ -1,0 +1,190 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Source: Pages/Dashboard.jsx | sport-see</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/bootstrap.min.css">
+    <link type="text/css" rel="stylesheet" href="styles/prettify-jsdoc.css">
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/tui-doc.css">
+
+    
+</head>
+<body>
+<nav class="lnb" id="lnb">
+    <div class="logo" style="">
+        
+            <img src="img/toast-ui.png" width="100%" height="100%">
+        
+    </div>
+    <div class="title">
+        <h1><a href="index.html" class="link">sport-see</a></h1>
+        
+            <span class="version">v0.1.0</span>
+        
+    </div>
+    <div class="search-container" id="search-container">
+        <input type="text" placeholder="Search">
+        <ul></ul>
+    </div>
+    
+    <div class="lnb-api hidden"><h3>Modules</h3><ul><li><a href="module-Dashboard.html">Dashboard</a><button type="button" class="hidden toggle-subnav btn btn-link">  <span class="glyphicon glyphicon-plus"></span></button><div class="hidden" id="module:Dashboard_sub"></div></li></ul></div><div class="lnb-api hidden"><h3>Classes</h3><ul><li><a href="Activity.html">Activity</a><button type="button" class="hidden toggle-subnav btn btn-link">  <span class="glyphicon glyphicon-plus"></span></button><div class="hidden" id="Activity_sub"></div></li><li><a href="AverageSession.html">AverageSession</a><button type="button" class="hidden toggle-subnav btn btn-link">  <span class="glyphicon glyphicon-plus"></span></button><div class="hidden" id="AverageSession_sub"><div class="member-type">Members</div><ul class="inner"><li><a href="AverageSession.html#day">day</a></li><li><a href="AverageSession.html#sessionLength">sessionLength</a></li></ul></div></li><li><a href="Performance.html">Performance</a><button type="button" class="hidden toggle-subnav btn btn-link">  <span class="glyphicon glyphicon-plus"></span></button><div class="hidden" id="Performance_sub"><div class="member-type">Members</div><ul class="inner"><li><a href="Performance.html#kind">kind</a></li><li><a href="Performance.html#kindToDisplay">kindToDisplay</a></li><li><a href="Performance.html#value">value</a></li></ul></div></li><li><a href="Score.html">Score</a><button type="button" class="hidden toggle-subnav btn btn-link">  <span class="glyphicon glyphicon-plus"></span></button><div class="hidden" id="Score_sub"></div></li></ul></div><div class="lnb-api hidden"><h3>Global</h3><ul><li><a href="global.html#ActivityGraph">ActivityGraph</a></li><li class="hidden"><a href="global.html#RadialBarChartData">RadialBarChartData</a></li><li><a href="global.html#UserAverageSessionsLineChart">UserAverageSessionsLineChart</a></li><li><a href="global.html#calculateAverageSessionTime">calculateAverageSessionTime</a></li><li><a href="global.html#fetchActivity">fetchActivity</a></li><li><a href="global.html#fetchData">fetchData</a></li><li><a href="global.html#fetchFirstName">fetchFirstName</a></li><li><a href="global.html#fetchPerformance">fetchPerformance</a></li><li><a href="global.html#fetchScores">fetchScores</a></li><li><a href="global.html#fetchSession">fetchSession</a></li><li><a href="global.html#lightenColor">lightenColor</a></li></ul></div>
+</nav>
+<div id="resizer"></div>
+
+<div class="main" id="main">
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+
+This module contains a Dashboard component which renders a dashboard page.
+The component is responsible for fetching user data from an external API and displaying it.
+It includes multiple sub-components such as Sidebar, Header, Name, Squares, DailyActivity, AverageSessions, PerformanceChart, and GoalScore.
+@module Dashboard
+@requires react
+@requires react-router-dom
+@requires tools/api.js
+@requires ../CSS/dashboard.css
+@requires ../Components/Header/Header.jsx
+@requires ../Components/Welcome/Welcome.jsx
+@requires ../Components/Info/Square.jsx
+@requires ../Components/Sidebar/index.jsx
+@requires ../Components/Graphs/DailyActivity/DailyActivity.jsx
+@requires ../Components/Graphs/GoalScore/GoalScore.jsx
+@requires ../Components/Graphs/UserPerformance/Performance.jsx
+@requires ../Components/Graphs/AverageSessions/AverageSessions.jsx
+*/
+
+import React, { useState, useEffect } from 'react';
+import { fetchData, fetchActivity, fetchSession, fetchPerformance, fetchScores, fetchFirstName } from '../tools/api.js';
+import '../CSS/dashboard.css'
+import Header from "../Components/Header/Header.jsx";
+import Name from "../Components/Welcome/Welcome.jsx";
+import Squares from '../Components/Info/Square.jsx';
+import Sidebar from '../Components/Sidebar/index.jsx';
+import DailyActivity from '../Components/Graphs/DailyActivity/DailyActivity.jsx'
+import GoalScore from '../Components/Graphs/GoalScore/GoalScore.jsx'
+import PerformanceChart from '../Components/Graphs/UserPerformance/Performance.jsx';
+import AverageSessions from '../Components/Graphs/AverageSessions/AverageSessions.jsx'
+import { useParams } from 'react-router-dom';
+
+function Dashboard () {
+    /* get user id from the url params */
+    const {id} = useParams();
+    // if (!id) id = null;
+    console.log(id)
+    const [data, setData] = useState({});
+    const [activity, setActivity] = useState([]);
+    const [session, setAverageSession] = useState([]);
+    const [performance, setPerformance] = useState([]);
+    const [scores, setScores] = useState([])
+    const [firstName, setFirstName] = useState('');
+    
+    useEffect(() => {
+        async function getData(id) {
+            const response = await fetchData(id);
+        setData(response.data);
+      }
+        async function getActivity(id) {
+            await fetchActivity(setActivity, id);
+      }
+        async function getSession(id) {
+            await fetchSession(setAverageSession, id);
+      }
+        async function getPerformance(id) {
+            await fetchPerformance(setPerformance ,id);
+      }
+      async function getScores(id){
+        await fetchScores(setScores, id);
+      }
+      async function getFirstName(id){
+        await fetchFirstName(setFirstName, id);
+      }
+      
+      getActivity(id);
+      getSession(id);
+      getPerformance(id);
+      getScores(id);
+      getData(id);
+      getFirstName(id);
+    }, []);
+  
+    if (firstName === "") {
+      return &lt;div>Loading...&lt;/div>;
+    }
+    console.log(data)
+    console.log(activity)
+    console.log(session)
+    console.log(performance)
+
+    return (
+        &lt;div>
+            &lt;Header />
+            &lt;div className="content">
+                &lt;aside>&lt;Sidebar />&lt;/aside>
+                &lt;main>
+                        &lt;div className='main-screen'>
+                            &lt;Name name = {firstName}/>
+                            &lt;div className='info-container'>
+                                &lt;div className='graphs-container'>
+                                    &lt;div className='single-graph'>
+                                        &lt;DailyActivity sessions = {activity}/>
+                                    &lt;/div>
+                                    &lt;div className='graph-group'>
+                                        &lt;AverageSessions averageSession = {session}/>
+                                        &lt;PerformanceChart userPerformanceData = {performance}/>
+                                        &lt;GoalScore scores = {scores}/>
+                                    &lt;/div>
+                                &lt;/div>
+                                &lt;Squares keyData = {data.keyData}/>
+                            &lt;/div>
+                        &lt;/div>
+                &lt;/main>
+            &lt;/div>
+        &lt;/div>
+    )
+}
+
+export default Dashboard;</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<footer>
+    <img class="logo" src="img/toast-ui.png" style="">
+    <div class="footer-text">NHN Entertainment. Frontend Development Lab</div>
+</footer>
+<script>prettyPrint();</script>
+<script src="scripts/jquery.min.js"></script>
+<script src="scripts/tui-doc.js"></script>
+<script src="scripts/linenumber.js"></script>
+
+    <script>
+        var id = '_sub'.replace(/"/g, '_');
+        var selectedApi = document.getElementById(id); // do not use jquery selector
+        var $selectedApi = $(selectedApi);
+
+        $selectedApi.removeClass('hidden');
+        $selectedApi.parent().find('.glyphicon').removeClass('glyphicon-plus').addClass('glyphicon-minus');
+        showLnbApi();
+    </script>
+
+</body>
+</html>

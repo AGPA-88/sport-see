@@ -1,0 +1,180 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Source: tools/api.js | sport-see</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/bootstrap.min.css">
+    <link type="text/css" rel="stylesheet" href="styles/prettify-jsdoc.css">
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/tui-doc.css">
+
+    
+</head>
+<body>
+<nav class="lnb" id="lnb">
+    <div class="logo" style="">
+        
+            <img src="img/toast-ui.png" width="100%" height="100%">
+        
+    </div>
+    <div class="title">
+        <h1><a href="index.html" class="link">sport-see</a></h1>
+        
+            <span class="version">v0.1.0</span>
+        
+    </div>
+    <div class="search-container" id="search-container">
+        <input type="text" placeholder="Search">
+        <ul></ul>
+    </div>
+    
+    <div class="lnb-api hidden"><h3>Modules</h3><ul><li><a href="module-Dashboard.html">Dashboard</a><button type="button" class="hidden toggle-subnav btn btn-link">  <span class="glyphicon glyphicon-plus"></span></button><div class="hidden" id="module:Dashboard_sub"></div></li></ul></div><div class="lnb-api hidden"><h3>Classes</h3><ul><li><a href="Activity.html">Activity</a><button type="button" class="hidden toggle-subnav btn btn-link">  <span class="glyphicon glyphicon-plus"></span></button><div class="hidden" id="Activity_sub"></div></li><li><a href="AverageSession.html">AverageSession</a><button type="button" class="hidden toggle-subnav btn btn-link">  <span class="glyphicon glyphicon-plus"></span></button><div class="hidden" id="AverageSession_sub"><div class="member-type">Members</div><ul class="inner"><li><a href="AverageSession.html#day">day</a></li><li><a href="AverageSession.html#sessionLength">sessionLength</a></li></ul></div></li><li><a href="Performance.html">Performance</a><button type="button" class="hidden toggle-subnav btn btn-link">  <span class="glyphicon glyphicon-plus"></span></button><div class="hidden" id="Performance_sub"><div class="member-type">Members</div><ul class="inner"><li><a href="Performance.html#kind">kind</a></li><li><a href="Performance.html#kindToDisplay">kindToDisplay</a></li><li><a href="Performance.html#value">value</a></li></ul></div></li><li><a href="Score.html">Score</a><button type="button" class="hidden toggle-subnav btn btn-link">  <span class="glyphicon glyphicon-plus"></span></button><div class="hidden" id="Score_sub"></div></li></ul></div><div class="lnb-api hidden"><h3>Global</h3><ul><li><a href="global.html#ActivityGraph">ActivityGraph</a></li><li class="hidden"><a href="global.html#RadialBarChartData">RadialBarChartData</a></li><li><a href="global.html#UserAverageSessionsLineChart">UserAverageSessionsLineChart</a></li><li><a href="global.html#calculateAverageSessionTime">calculateAverageSessionTime</a></li><li><a href="global.html#fetchActivity">fetchActivity</a></li><li><a href="global.html#fetchData">fetchData</a></li><li><a href="global.html#fetchFirstName">fetchFirstName</a></li><li><a href="global.html#fetchPerformance">fetchPerformance</a></li><li><a href="global.html#fetchScores">fetchScores</a></li><li><a href="global.html#fetchSession">fetchSession</a></li><li><a href="global.html#lightenColor">lightenColor</a></li></ul></div>
+</nav>
+<div id="resizer"></div>
+
+<div class="main" id="main">
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import axios from 'axios';
+import {Score, Activity, AverageSession, Performance} from '../models/kpi'
+
+/**
+Retrieves data for a specific user from the server
+@async
+@function
+@param {number} [userId=12] - The ID of the user to retrieve data for
+@returns {Promise} - A Promise object that resolves to the user data retrieved from the server
+*/
+export async function fetchData(userId=12) {
+  console.log(userId)
+  const response = await axios.get('http://localhost:3000/user/' + userId);
+  return response.data;
+}
+
+
+/**
+Retrieves activity data for a specific user from the server and sets it in state
+@async
+@function
+@param {function} setActivity - A function that sets the activity data in state
+@param {number} [userId=12] - The ID of the user to retrieve data for
+@returns {Promise} - A Promise object that resolves to the activity data retrieved from the server and sets it in state
+*/
+export async function fetchActivity(setActivity, userId=12) {
+  const response = await axios.get('http://localhost:3000/user/' + userId + '/activity');
+  const sessions = response.data.data.sessions.map(session => {return new Activity(session.day, session.kilogram,session.calories)})
+  setActivity(sessions)
+}
+
+/**
+ * Retrieves the average sessions data for a user with the specified ID from the server
+ * and sets it into a state variable using the provided setAverageSession function.
+ *
+ * @async
+ * @function fetchSession
+ * @param {function} setAverageSession - The function to set the retrieved data into a state variable
+ * @param {number} [userId=12] - The ID of the user to retrieve the data for (default value: 12)
+ * @throws {Error} Will throw an error if there is a problem with the network request
+ * @returns {Promise&lt;void>} A promise that resolves when the data has been retrieved and set into the state variable
+ */
+export async function fetchSession(setAverageSession, userId=12) {
+  const response = await axios.get('http://localhost:3000/user/' + userId + '/average-sessions');
+  console.log("🚀 ~ file: api.js:16 ~ fetchSession ~ response:", response)
+  const averageSessions = response.data.data.sessions.map(session => {return new AverageSession(session.day, session.sessionLength)})
+  console.log("🚀 ~ file: api.js:21 ~ fetchSession ~ averageSessions:", averageSessions)
+  setAverageSession(averageSessions);
+}
+
+
+/**
+Fetches user's performance data from the API endpoint and sets it in the state variable using the provided setPerformance function.
+@async
+@function fetchPerformance
+@param {function} setPerformance - The state setter function for performance data.
+@param {number} [userId=12] - The user ID to fetch data for.
+@returns {Promise&lt;void>}
+@throws {Error} When API endpoint returns an error or data is malformed.
+*/
+export async function fetchPerformance(setPerformance ,userId=12) {
+  const response = await axios.get('http://localhost:3000/user/' + userId + '/performance');
+  console.log("🚀 ~ file: api.js:28 ~ fetchPerformance ~ response:", response.data.data)
+  const performance = response.data.data.data.map(kind => {return new Performance(kind.kind, kind.value, response.data.data.kind)})
+  console.log("🚀 ~ file: api.js:30 ~ fetchPerformance ~ Performance:", performance)
+  setPerformance(performance)
+}
+
+
+// function to fetch Scores
+
+/**
+
+Asynchronous function that fetches user scores.
+@async
+@function
+@param {Function} setScores - Callback function to set the fetched scores.
+@param {number} [userId=12] - Optional parameter that specifies the user id. Default is 12.
+@returns {Promise&lt;void>} - Promise object that resolves when the scores are set via setScores callback.
+*/
+export async function fetchScores(setScores, userId=12) {
+  const response = await axios.get('http://localhost:3000/user/' + userId);
+  const score = response.data.data.todayScore ? response.data.data.todayScore : response.data.data.score;
+  const baseScore = new Score(null, 100, '#FBFBFB', '#FBFBFB', '0');
+  const todayScore= new Score(null, score*100,'#FF0000');
+  setScores([baseScore, todayScore ]) ;
+}
+
+/**
+Fetches the first name of a user with the given user ID and updates the state using setFirstName.
+@async
+@function
+@param {function} setFirstName - A state updater function that sets the first name of the user.
+@param {number} [userId=12] - The ID of the user to fetch. Defaults to 12 if not provided.
+@returns {Promise&lt;void>}
+*/
+export async function fetchFirstName(setFirstName, userId=12) {
+  const response = await axios.get('http://localhost:3000/user/' + userId);
+  setFirstName(response.data.data.userInfos.firstName);
+}
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<footer>
+    <img class="logo" src="img/toast-ui.png" style="">
+    <div class="footer-text">NHN Entertainment. Frontend Development Lab</div>
+</footer>
+<script>prettyPrint();</script>
+<script src="scripts/jquery.min.js"></script>
+<script src="scripts/tui-doc.js"></script>
+<script src="scripts/linenumber.js"></script>
+
+    <script>
+        var id = '_sub'.replace(/"/g, '_');
+        var selectedApi = document.getElementById(id); // do not use jquery selector
+        var $selectedApi = $(selectedApi);
+
+        $selectedApi.removeClass('hidden');
+        $selectedApi.parent().find('.glyphicon').removeClass('glyphicon-plus').addClass('glyphicon-minus');
+        showLnbApi();
+    </script>
+
+</body>
+</html>

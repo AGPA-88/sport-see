@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Home | sport-see</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/bootstrap.min.css">
+    <link type="text/css" rel="stylesheet" href="styles/prettify-jsdoc.css">
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/tui-doc.css">
+
+    
+</head>
+<body>
+<nav class="lnb" id="lnb">
+    <div class="logo" style="">
+        
+            <img src="img/toast-ui.png" width="100%" height="100%">
+        
+    </div>
+    <div class="title">
+        <h1><a href="index.html" class="link">sport-see</a></h1>
+        
+            <span class="version">v0.1.0</span>
+        
+    </div>
+    <div class="search-container" id="search-container">
+        <input type="text" placeholder="Search">
+        <ul></ul>
+    </div>
+    
+    <div class="lnb-api hidden"><h3>Modules</h3><ul><li><a href="module-Dashboard.html">Dashboard</a><button type="button" class="hidden toggle-subnav btn btn-link">  <span class="glyphicon glyphicon-plus"></span></button><div class="hidden" id="module:Dashboard_sub"></div></li></ul></div><div class="lnb-api hidden"><h3>Classes</h3><ul><li><a href="Activity.html">Activity</a><button type="button" class="hidden toggle-subnav btn btn-link">  <span class="glyphicon glyphicon-plus"></span></button><div class="hidden" id="Activity_sub"></div></li><li><a href="AverageSession.html">AverageSession</a><button type="button" class="hidden toggle-subnav btn btn-link">  <span class="glyphicon glyphicon-plus"></span></button><div class="hidden" id="AverageSession_sub"><div class="member-type">Members</div><ul class="inner"><li><a href="AverageSession.html#day">day</a></li><li><a href="AverageSession.html#sessionLength">sessionLength</a></li></ul></div></li><li><a href="Performance.html">Performance</a><button type="button" class="hidden toggle-subnav btn btn-link">  <span class="glyphicon glyphicon-plus"></span></button><div class="hidden" id="Performance_sub"><div class="member-type">Members</div><ul class="inner"><li><a href="Performance.html#kind">kind</a></li><li><a href="Performance.html#kindToDisplay">kindToDisplay</a></li><li><a href="Performance.html#value">value</a></li></ul></div></li><li><a href="Score.html">Score</a><button type="button" class="hidden toggle-subnav btn btn-link">  <span class="glyphicon glyphicon-plus"></span></button><div class="hidden" id="Score_sub"></div></li></ul></div><div class="lnb-api hidden"><h3>Global</h3><ul><li><a href="global.html#ActivityGraph">ActivityGraph</a></li><li class="hidden"><a href="global.html#RadialBarChartData">RadialBarChartData</a></li><li><a href="global.html#UserAverageSessionsLineChart">UserAverageSessionsLineChart</a></li><li><a href="global.html#calculateAverageSessionTime">calculateAverageSessionTime</a></li><li><a href="global.html#fetchActivity">fetchActivity</a></li><li><a href="global.html#fetchData">fetchData</a></li><li><a href="global.html#fetchFirstName">fetchFirstName</a></li><li><a href="global.html#fetchPerformance">fetchPerformance</a></li><li><a href="global.html#fetchScores">fetchScores</a></li><li><a href="global.html#fetchSession">fetchSession</a></li><li><a href="global.html#lightenColor">lightenColor</a></li></ul></div>
+</nav>
+<div id="resizer"></div>
+
+<div class="main" id="main">
+    
+
+
+
+    
+
+
+
+
+
+
+
+
+
+    
+
+
+    <section>
+        <article class="readme"><h1 id="sportsee">SportSee</h1>
+<p>SportSee is a React frontend project developed as part of a developer course. It contains several components, CSS files, API files, and KPI files that help users track their fitness progress.</p>
+<h2 id="getting-started">Getting Started</h2>
+<h3 id="running-the-backend">Running the Backend</h3>
+<p>The SportSee frontend relies on a backend API to retrieve data. To run the backend, follow these steps:</p>
+<p>1.  Clone the backend repository to your local machine:</p>
+<p><code>git clone https://github.com/OpenClassrooms-Student-Center/P9-front-end-dashboard.git</code></p>
+<p>2.  Change to the project directory:</p>
+<p><code>cd P9-front-end-dashboard</code></p>
+<p>3.  Install the required dependencies:</p>
+<p><code>npm install</code></p>
+<p>4.  Start the backend server:</p>
+<p><code>npm run start</code></p>
+<p>The server should now be running on port 3000.</p>
+<p>5.  Configure the frontend to use the backend API:</p>
+<p>Open the <code>src/api/config.js</code> file and replace the <code>baseURL</code> value with <code>http://localhost:3000/</code>.</p>
+<p>`const axiosInstance = axios.create({</p>
+<p>baseURL: 'http://localhost:3000/', // &lt;-- Replace this value</p>
+<p>timeout: 10000,</p>
+<p>});`</p>
+<p>Save the file.</p>
+<p>6.  Restart the frontend:</p>
+<p>Run <code>npm start</code> in the frontend project directory to restart the frontend.</p>
+<p>`cd sport-see</p>
+<p>npm start`</p>
+<p>The app should now be running with data from the backend API.</p>
+<h3 id="prerequisites">Prerequisites</h3>
+<p>To run SportSee on your machine, you need to have the following software installed:</p>
+<ul>
+<li>Node.js (version 12 or higher)</li>
+<li>npm (version 6 or higher)</li>
+</ul>
+<h3 id="installation">Installation</h3>
+<ol>
+<li>
+<p>Clone the repository to your local machine:</p>
+<p><code>git clone https://github.com/AGPA-88/sport-see.git</code></p>
+</li>
+<li>
+<p>Change to the project directory:</p>
+<p><code>cd sport-see</code></p>
+</li>
+<li>
+<p>Install the required dependencies:</p>
+<p><code>npm install</code></p>
+</li>
+</ol>
+<h3 id="running-the-app">Running the App</h3>
+<p>To start the app, run the following command in the project directory:</p>
+<p><code>npm start</code></p>
+<p>The app should now be running at <a href="http://localhost:3000/">http://localhost:3000</a>. Open your web browser and go to that URL to see the app in action.</p>
+<h2 id="usage">Usage</h2>
+<p>SportSee allows users to track their fitness progress through various KPIs (Key Performance Indicators). To use the app, follow these steps:</p>
+<ol>
+<li>Log in with your username and password.</li>
+<li>View your fitness dashboard, which shows your progress across various KPIs.</li>
+<li>Select a KPI to view more detailed information about your progress.</li>
+</ol>
+<h2 id="contributing">Contributing</h2>
+<p>If you want to contribute to this project, please follow these guidelines:</p>
+<ol>
+<li>Fork the repository.</li>
+<li>Create a new branch for your changes.</li>
+<li>Make your changes and test them thoroughly.</li>
+<li>Commit your changes with clear and concise commit messages.</li>
+<li>Push your changes to your fork.</li>
+<li>Create a pull request for your changes.</li>
+</ol>
+<h2 id="license">License</h2>
+<p>This project is licensed under the MIT License - see the <a href="https://chat.openai.com/LICENSE">LICENSE</a> file for details.</p></article>
+    </section>
+
+
+
+
+
+
+</div>
+
+<footer>
+    <img class="logo" src="img/toast-ui.png" style="">
+    <div class="footer-text">NHN Entertainment. Frontend Development Lab</div>
+</footer>
+<script>prettyPrint();</script>
+<script src="scripts/jquery.min.js"></script>
+<script src="scripts/tui-doc.js"></script>
+<script src="scripts/linenumber.js"></script>
+
+    <script>
+        var id = 'package:sport-see_sub'.replace(/"/g, '_');
+        var selectedApi = document.getElementById(id); // do not use jquery selector
+        var $selectedApi = $(selectedApi);
+
+        $selectedApi.removeClass('hidden');
+        $selectedApi.parent().find('.glyphicon').removeClass('glyphicon-plus').addClass('glyphicon-minus');
+        showLnbApi();
+    </script>
+
+</body>
+</html>

@@ -40,5 +40,10 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "jsdoc": "^4.0.2",
+    "taffydb": "^2.7.3",
+    "tui-jsdoc-template": "^1.2.2"
   }
 }
